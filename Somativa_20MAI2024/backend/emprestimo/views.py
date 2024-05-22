@@ -37,3 +37,5 @@ class EmprestimoView(ModelViewSet):
 class EmprestimoLivrosView(CustonModelViewSet):
     queryset = EmprestimoLivros.objects.all()
     serializer_class = EmprestimoLivrosSerializer
+
+# teste

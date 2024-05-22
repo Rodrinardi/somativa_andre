@@ -49,8 +49,8 @@ class AdminEmprestimo(admin.ModelAdmin):
 admin.site.register(Emprestimo,AdminEmprestimo)
 
 class AdminEmprestimoLivros(admin.ModelAdmin):
-    list_display = ['id','livroFK', 'quantidade', 'emprestimoFK']
-    list_display_links = ['id','livroFK', 'quantidade', 'emprestimoFK']
+    list_display = ['id','livroFK', 'emprestimoFK']
+    list_display_links = ['id','livroFK', 'emprestimoFK']
     search_fields = ('livroFK',)
     list_per_page = 10
 

@@ -107,7 +107,7 @@ STATUS_EMPRESTIMO = [
 
 
 class Emprestimo(models.Model):
-    usuarioFK = models.ForeignKey(UsuarioCustomizado, related_name='usuarioEmprestimo', on_delete=models.CASCADE)
+    usuarioFK = models.ForeignKey(UsuarioCustomizado, related_name='emprestimo_usuariocustomizado', on_delete=models.CASCADE)
     dataEmprestimo = models.DateField(auto_now_add=True)
     devolucaoPrevista = models.DateField() #duas semanas depois da data emprestimo
     dataDevolucao = models.DateField(null=True, blank=True)
@@ -117,9 +117,8 @@ class Emprestimo(models.Model):
             return self.status
 
 class EmprestimoLivros(models.Model):
-     livroFK = models.ForeignKey(Livros, related_name='Emprestimo_livro', on_delete=models.CASCADE)
-     quantidade = models.IntegerField()
-     emprestimoFK = models.ForeignKey(Emprestimo, related_name='livro_Emprestimo', on_delete=models.CASCADE)
+     livroFK = models.ForeignKey(Livros, related_name='livroEmprestimoLivro', on_delete=models.CASCADE)
+     emprestimoFK = models.ForeignKey(Emprestimo, related_name='emprestimoEmprestimoLivro', on_delete=models.CASCADE)
 
      def __str__(self):
             return self.livroFK.titulo
