@@ -19,55 +19,32 @@ class UsuarioCustomizado(AbstractBaseUser,PermissionsMixin):
      def __str__(self):
           return self.email
      
-
 class Foto(models.Model):
     url = models.CharField(max_length=3000)
 
     def __str__(self):
         return self.url
-    
+     
 
+class GeneroLivro(models.Model):
+     nome = models.CharField(max_length=150)
+
+     def __str__(self):
+          return self.nome
+     
 
 CLASSIFICACAO_INDICATIVA = [
-
     ('L','LIVRE'),
     ('10','10 anos'),
     ('12','12 anos'),
     ('14','14 anos'),
     ('16','16 anos'),
-    ('18','18 anos')
-   
+    ('18','18 anos')  
 ]
-
-
-
-CATEGORIA_LIVRO = [
-    ("T", "TERROR"),
-    ("R", "ROMANCE"),
-    ("A", "AVENTURA"),
-    ("M", "MISTÉRIO"),
-    ("FC", "FICÇÃO CIENTÍFICA"),
-    ("D", "DRAMA"),
-    ("C", "CRIME"),
-    ("H", "HISTÓRIA"),
-    ("B", "BIOGRAFIA"),
-    ("E", "ENSINO"),
-    ("P", "POESIA"),
-    ("AA", "AUTOAJUDA"),
-    ("F", "FANTASIA"),
-    ("LIJ", "LITERATURA INFANTO-JUVENIL")
-    
-]
-
 
 FORMATO_LIVRO = [
- 
     ("E", "EBOOK"),
-    ("F", "FÍSICO")
-    
-   
-
-
+    ("F", "FÍSICO")   
 ]
 
 APROVACAO_LIVRO = [
@@ -80,6 +57,7 @@ class Livros(models.Model):
     titulo = models.CharField(max_length=45)
     nota = models.IntegerField()
     valor = models.DecimalField(max_digits=5, decimal_places=2)
+    GeneroLivroFK = models.ForeignKey(GeneroLivro, related_name='genero', on_delete=models.CASCADE)
     quantidade = models.IntegerField()
     autor = models.ForeignKey(UsuarioCustomizado, related_name='autorLivro', on_delete=models.CASCADE)
     descricao = models.TextField()
@@ -87,7 +65,6 @@ class Livros(models.Model):
     idade = models.CharField(choices=CLASSIFICACAO_INDICATIVA, max_length=35)
     dataLancamento = models.DateField(auto_now_add=True)
     publicacao = models.DateField()
-    categoria = models.CharField(choices=CATEGORIA_LIVRO, max_length=30)
     fotoFK = models.ForeignKey(Foto, related_name='fotoLivro', on_delete=models.CASCADE)
     numeroPaginas = models.IntegerField()
     formato = models.CharField(choices=FORMATO_LIVRO, max_length=30)
@@ -96,6 +73,7 @@ class Livros(models.Model):
 
     def __str__(self):
         return self.titulo
+    
 
 
 STATUS_EMPRESTIMO = [
@@ -104,7 +82,6 @@ STATUS_EMPRESTIMO = [
     ("R","RECUSADO"),
     ("C","CANCELADO"),
 ]
-
 
 class Emprestimo(models.Model):
     usuarioFK = models.ForeignKey(UsuarioCustomizado, related_name='emprestimo_usuariocustomizado', on_delete=models.CASCADE)

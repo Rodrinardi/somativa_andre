@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 from django.urls import path
 
 router = DefaultRouter()
+router.register(r'generolivro',GeneroLivroView)
 router.register(r'livros',LivrosView)
 router.register(r'emprestimo',EmprestimoView)
 router.register(r'emprestimo-livros',EmprestimoLivrosView)

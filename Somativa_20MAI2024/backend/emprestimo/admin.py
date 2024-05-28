@@ -32,6 +32,14 @@ class AdminFoto(admin.ModelAdmin):
     
 admin.site.register(Foto,AdminFoto)
 
+class AdminGeneroLivro(admin.ModelAdmin):
+    list_display = ['id']
+    list_display_links = ('id',)
+    search_fields = ('id',)
+    list_per_page = 10
+
+admin.site.register(GeneroLivro)
+
 class AdminLivros(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'autor']
     list_display_links = ['id', 'titulo', 'autor']

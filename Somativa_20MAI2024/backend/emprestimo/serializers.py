@@ -7,6 +7,12 @@ class UsuarioCustomizadoSerializer(serializers.ModelSerializer):
         fields = ['id','email','telefone','cpf','endereco','is_active','groups','user_permissions']
         many = True
 
+class GeneroLivroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GeneroLivro
+        fields = '__all__'
+        many = True
+
 class FotoSerializer(serializers.ModelSerializer):
     class Meta:
         models = Foto
