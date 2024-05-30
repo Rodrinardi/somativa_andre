@@ -83,12 +83,20 @@ STATUS_EMPRESTIMO = [
     ("C","CANCELADO"),
 ]
 
+STATUS_PAGAMENTOS = [
+    ("P","PENDENTE"),
+    ("A","APROVADO"),
+    ("R","RECUSADO"),
+    ("C","CANCELADO"),
+]
+
 class Emprestimo(models.Model):
     usuarioFK = models.ForeignKey(UsuarioCustomizado, related_name='emprestimo_usuariocustomizado', on_delete=models.CASCADE)
     dataEmprestimo = models.DateField(auto_now_add=True)
     devolucaoPrevista = models.DateField() #duas semanas depois da data emprestimo
     dataDevolucao = models.DateField(null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS_EMPRESTIMO)
+    status = models.CharField(max_length=20, choices=STATUS_PAGAMENTOS)
 
     def __str__(self):
             return self.status

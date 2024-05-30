@@ -23,7 +23,7 @@ const fazerLogin = () => {
         })
         .catch((error) => {
             console.error("error: ", error);
-            mensagemErro.value = 'usuário ou senha inválidos';
+            mensagemErro.value = 'usuario e ou senha invalidos';
             setTimeout(() => {
                 mensagemErro.value = '';
                 credenciais.email = '';
@@ -52,7 +52,7 @@ const toggle = (event: any) => {
         </div>
 
         <section class="login-container flex flex-column align-items-center justify-content-center">
-            <h4 class="row-login">Locação de livros Seraiva</h4>
+            <h4 class="row-login">Adega Santo Antônio</h4>
             <div class="row-login">
                 <FloatLabel>
                     <InputText v-model="credenciais.email" type="email" id="email-input" class="input-text" />
