@@ -6,8 +6,6 @@ definePageMeta({
     layout: 'login'
 })
 
-
-
 const credenciais = reactive({
     email: '',
     password: ''
@@ -18,9 +16,9 @@ const fazerLogin = () => {
     console.log("login: ", credenciais);
     signIn(credenciais, { redirect: false })
         .then(() => {
-            console.log("logado com sucesso....");
-            navigateTo('/home');
-        })
+             console.log("logado com sucesso....");
+             navigateTo('/home');
+         })
         .catch((error) => {
             console.error("error: ", error);
             mensagemErro.value = 'usuário ou senha inválidos';

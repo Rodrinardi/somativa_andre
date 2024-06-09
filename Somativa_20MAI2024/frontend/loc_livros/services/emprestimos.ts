@@ -1,5 +1,5 @@
 import { BACKEND_URL } from "~/models/emprestimo";
-import type { Emprestimo, EmprestimoLivros, EmprestimoLivrosBody } from "~/models/emprestimos";
+import type { Emprestimo, EmprestimoLivros, EmprestimoLivrosBody } from "~/models/emprestimoos";
 
 export const salvarEmprestimo = (venda: Emprestimo): Promise<Emprestimo | null> => {
   return useFetch<Emprestimo>(`${BACKEND_URL}/emprestimos/`, {

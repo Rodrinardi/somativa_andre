@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { type Ref, ref } from 'vue';
 import { computed } from "#imports";
 import { carrinho, type CarrinhoItem } from "#imports";
 const { getCarrinho, removerDoCarinho, getValorTotalDoCarrinho, esvaziarCarrinho } = carrinho();
-import { salvarEmprestimo, salvarEmprestimoLivros } from "~/services/emprestimos";
+import { salvarEmprestimo, salvarEmprestimoLivros } from "~services/emprestimos";
 const { data } = useAuth();
-import { PAGAMENTOS, type EmprestimoLivrosBody } from "~/models/emprestimos";
+import { PAGAMENTOS, type EmprestimoLivrosBody } from "~/models/emprestimoos";
 import { type Usuario } from "~/models/usuario";
 
 definePageMeta({
@@ -49,8 +50,7 @@ const salvarPedido = () => {
         payload.push({
           emprestimoFK: emprestimoSalvo?.id ?? 0,
           livroFK: item.filme.id ?? 0,
-          quantidade: item.quantidade,
-        })
+                  })
       });
 
       salvarEmprestimoLivros(payload).then(resposta => {

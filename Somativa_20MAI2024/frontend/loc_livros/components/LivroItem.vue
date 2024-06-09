@@ -22,6 +22,11 @@ const livroNoCarrinho = computed(()=>{
   return estaNoCarrinho(props.livro);   
 });
 
+const detalheLivro = ()=>{
+    const idLivro = props.livro.id;
+    navigateTo(`/home/${idLivro}`);
+}
+
 </script>
 
 <template>

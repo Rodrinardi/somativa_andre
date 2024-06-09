@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { computed } from "#imports";
-import { type Livro } from "~/models/livros";
+import { type Livro } from "~models/livros";
 import { carrinho } from "#imports";
 const { adicionarNoCarrinho, getCarrinho, estaNoCarrinho } = carrinho();
+
+definePageMeta({
+    middleware: 'auth'
+});
 
 type propType = {
   livro: Livro;
@@ -18,7 +22,7 @@ const adicionarItem = () => {
   console.log("CARRINHO ATUAL: ", getCarrinho());
 }
 
-const produtoNoCarrinho = computed(()=>{
+const livroNoCarrinho = computed(()=>{
   return estaNoCarrinho(props.livro);   
 });
 
@@ -27,13 +31,13 @@ const produtoNoCarrinho = computed(()=>{
 <template>
   <section class="cartao flex flex-column align-items-center justify-content-center" v-if="props.livro">
     <div class="check text-right">      
-      <Checkbox v-model="produtoNoCarrinho" :binary="true" :readonly="true"/>
+      <Checkbox v-model="livroNoCarrinho" :binary="true" :readonly="true"/>
     </div>
-    <div class="produto-imagem">
+    <div class="livro-imagem">
       <img :src="props.livro.fotoFK[0]" />
     </div>
     <div>
-      <h4 class="produto-nome">{{ props.livro.valor}}</h4>
+      <h4 class="livro-titulo">{{ props.livro.valor}}</h4>
     </div>
     <div class="flex flex-row">
       <span>R${{ props.livro.valor }} - </span>

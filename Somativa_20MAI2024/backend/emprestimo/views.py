@@ -20,6 +20,7 @@ class UsuarioCustomizadoView(ModelViewSet):
 class GeneroLivroView(ModelViewSet):
     queryset = GeneroLivro.objects.all()
     serializer_class = GeneroLivroSerializer
+    permission_classes = IsAuthenticated
 
 class LivrosView(ModelViewSet):
     queryset = Livros.objects.all()

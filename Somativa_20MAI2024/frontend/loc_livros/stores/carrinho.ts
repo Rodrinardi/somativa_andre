@@ -23,7 +23,7 @@ export const carrinho = defineStore('carrinhoStore', {
                     livroJaExiste
                 ];
             }
-            //produto não está no carrinho ainda
+            
             else{
                 this.livros.push({
                     quantidade: 1,

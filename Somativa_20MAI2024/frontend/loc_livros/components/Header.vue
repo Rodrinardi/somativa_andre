@@ -22,7 +22,7 @@ const itensMenu = ref([
     <div class="flex align-items-center justify-content-center">
         <div class="menu-item flex align-items-center justify-content-center mr-4">
           <i class="pi pi-home mr-1"></i>
-          <NuxtLink to="/home">Produtos</NuxtLink>
+          <NuxtLink to="/home">Livros</NuxtLink>
         </div>
         <div class="menu-item flex align-items-center justify-content-center mr-4">
           <i class="pi pi-wallet mr-1"></i>
